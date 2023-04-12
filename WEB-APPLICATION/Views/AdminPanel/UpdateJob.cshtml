@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<p>
+   Update Job
+</p>
+@using (Html.BeginForm("UpdateJob", "AdminPanel", FormMethod.Post))
+{
+    <div class="row mb-2">
+        <label class="col-sm-8 col-form-label" for="name">Job Name</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="name" id="name" value="@ViewBag.jobs.JobName" required />
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-sm-8 col-form-label" for="cate">Job Category</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="category" id="cate" value="@ViewBag.jobs.Category" required />
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-sm-8 col-form-label" for="subcat">Sub Category</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" name="subcat" id="subcat" value="@ViewBag.jobs.SubCategory" required />
+        </div>
+    </div>
+    <div class="row mb-2">
+        <label class="col-sm-8 col-form-label" for="count">Vacancy Count</label>
+        <div class="col-sm-5">
+            <input type="int" class="form-control" name="count" id="count" value="@ViewBag.jobs.VacancyCount" required />
+        </div>
+    </div>
+    <input type="hidden" name="id" value="@ViewBag.jobs.JobId">
+    <div>
+        <button class="btn btn-success" type="submit" >
+
+            SUBMIT
+
+        </button>
+    </div>
+}
+<div class="mt-5">
+    <a class="btn btn-danger" href="/AdminPanel/Index">Cancel</a>
+</div>

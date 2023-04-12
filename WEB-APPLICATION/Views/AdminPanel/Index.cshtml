@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>In Admin Panel</h1>
+<div>
+    <a class="btn btn-primary" asp-controller="AdminPanel" asp-action="AddJob">Add Job</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Job Id</th>
+            <th>Job Name</th>
+            <th>Category</th>
+            <th>Sub Category</th>
+            <th>Vacancy</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (JobModel job in ViewBag.JobList)
+            {
+                <tr>
+                    <td>@job.JobId</td>
+                    <td>@job.JobName</td>
+                    <td>@job.Category</td>
+                    <td>@job.SubCategory</td>
+                    <td>@job.VacancyCount</td>
+                    <td>
+                        <a class="btn btn-outline-primary" asp-controller="AdminPanel" asp-action="UpdateJob" asp-route-id="@job.JobId">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" asp-controller="AdminPanel" asp-action="DeleteJob" asp-route-id="@job.JobId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>
