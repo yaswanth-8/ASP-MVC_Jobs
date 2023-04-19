@@ -28,6 +28,7 @@ namespace WEB_APPLICATION.Controllers
                             model.Category = reader.GetString(2);
                             model.SubCategory = reader.GetString(3);
                             model.VacancyCount = reader.GetInt32(4);
+                            model.Salary = reader.GetInt32(5);
                             JobList.Add(model);
                         }
                     }
@@ -41,13 +42,13 @@ namespace WEB_APPLICATION.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddJob(string name, string category, string subcat, int count)
+        public IActionResult AddJob(string name, string category, string subcat, int count,int salary)
         {
             string connectionString = "Data Source=DESKTOP-A1NJHOG;Initial Catalog=Job;Integrated Security=True;Encrypt=False;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query1 = $"INSERT INTO Jobs VALUES ('{name}','{category}','{subcat}',{count})";
+                string query1 = $"INSERT INTO Jobs VALUES ('{name}','{category}','{subcat}',{count},{salary})";
                 using (SqlCommand command = new SqlCommand(query1, connection))
                 {
                     command.ExecuteNonQuery();
@@ -91,6 +92,8 @@ namespace WEB_APPLICATION.Controllers
                             model.Category = reader.GetString(2);
                             model.SubCategory = reader.GetString(3);
                             model.VacancyCount = reader.GetInt32(4);
+                            model.Salary = reader.GetInt32(5);
+
                             //jobs.Add(model);
                         }
                     }
@@ -101,13 +104,13 @@ namespace WEB_APPLICATION.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateJob(string name, string category, string subcat, int count,int id)
+        public IActionResult UpdateJob(string name, string category, string subcat, int count,int id,int salary)
         {
             string connectionString = "Data Source=DESKTOP-A1NJHOG;Initial Catalog=Job;Integrated Security=True;Encrypt=False;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query1 = $"UPDATE Jobs SET JobName='{name}',Category='{category}',SubCategory='{subcat}',VacancyCount={count} WHERE JobId={id}";
+                string query1 = $"UPDATE Jobs SET JobName='{name}',Category='{category}',SubCategory='{subcat}',VacancyCount={count},Salary={salary} WHERE JobId={id}";
                 using (SqlCommand command = new SqlCommand(query1, connection))
                 {
                     command.ExecuteNonQuery();

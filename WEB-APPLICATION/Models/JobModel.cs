@@ -7,6 +7,7 @@
         public string Category { get; set; }
         public string SubCategory { get; set; }
         public int VacancyCount { get; set; }
+        public int Salary { get; set; }
         
     }
 }
